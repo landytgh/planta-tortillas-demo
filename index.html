@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#061525">
+  <title>Planta Tortillas | Sensores</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-icon">🫓</div><div><h1>PLANTA TORTILLAS</h1><p>Resultados del proyecto de sensores</p></div></div>
+      <div class="line-status"><label for="lineSelect">Vista</label><select id="lineSelect"><option value="all">Líneas 1 y 2</option><option value="1">Línea 1</option><option value="2">Línea 2</option></select><span><i></i> Datos disponibles</span></div>
+    </header>
+
+    <section class="toolbar">
+      <div class="tabs" role="tablist" aria-label="Periodo"><button class="active" data-period="day">Hoy</button><button data-period="week">Semana</button><button data-period="month">Mes</button></div>
+      <div class="date">📅 <span>6 Nov 2026</span></div>
+    </section>
+
+    <main>
+      <section class="card production-card">
+        <div>
+          <p class="eyebrow">Producción terminada</p>
+          <div class="hero-value" id="productionValue">73,203</div>
+          <p>tortillas · salida de horno</p>
+          <div class="progress"><span id="productionProgress"></span></div>
+          <div class="progress-meta"><span id="progressText">97.6% de la meta</span><span>Meta demo: <b id="goalLabel">75,000</b></span></div>
+        </div>
+        <div class="ring" id="goalRing"><div><strong id="goalPercent">97.6%</strong><small>de la meta</small></div></div>
+      </section>
+
+      <section class="kpi-grid">
+        <article class="card kpi"><p class="eyebrow">Ritmo promedio</p><strong id="rateValue">122</strong><span>tortillas/min</span><small>Referencia demo</small></article>
+        <article class="card kpi"><p class="eyebrow">Calidad</p><strong class="good" id="qualityValue">98.85%</strong><span id="qualityStatus">Meta ≥ 98.5% · Verde</span><small id="goodPieces">72,360 buenas</small></article>
+        <article class="card kpi"><p class="eyebrow">Merma calidad</p><strong class="good" id="wasteValue">1.15%</strong><span id="wasteStatus">Meta ≤ 1.5% · Verde</span><small id="badPieces">842 defectuosas</small></article>
+      </section>
+
+      <section class="controls card">
+        <div><label for="goalInput">Meta de producción</label><input id="goalInput" type="number" min="1" max="1000000" value="75000"></div>
+        <div class="stage-tabs"><button class="active" data-stage="horno">Salida de horno</button><button data-stage="cortadora">Cortadora</button></div>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="card chart-card wide"><div class="card-head"><div><p class="eyebrow">Producción por hora</p><h2 id="chartTotal">73,203 piezas</h2></div><span class="legend"><i></i> Producción</span></div><div class="bar-chart" id="hourChart" aria-label="Gráfica de producción por hora"></div></article>
+        <article class="card temperature-card"><p class="eyebrow">Temperatura del sensor</p><div class="temperature"><strong>32.8</strong><span>°C</span></div><p>Última lectura</p><div class="gauge"><div class="needle"></div></div><div class="gauge-labels"><span>20.6° mín.</span><span>37.4° máx.</span></div><div class="neutral-note">Sin rango operativo confirmado</div></article>
+        <article class="card wide"><p class="eyebrow">Producción por línea</p><div id="lineBars" class="line-bars"></div></article>
+        <article class="card"><p class="eyebrow">Calidad de salida</p><div class="donut-wrap"><div class="donut" id="qualityDonut"><div><strong id="donutValue">98.85%</strong><small>OK</small></div></div></div><div class="quality-legend"><span><i class="ok"></i><b id="legendOk">72,360</b> buenas</span><span><i class="bad"></i><b id="legendBad">842</b> defectuosas</span></div></article>
+      </section>
+
+      <section class="alert success" id="alertBox" aria-live="polite"><b>✓ Operación dentro de umbral</b><span>Calidad y merma de salida cumplen las metas propuestas para la POC.</span></section>
+      <p class="method-note">Producción basada en eventos de salida de horno. Calidad y merma se calculan sobre piezas evaluables. La meta de 75,000 es provisional para la presentación.</p>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegación principal"><button class="active"><span>⌂</span>Resumen</button><button><span>▥</span>Producción</button><button><span>✓</span>Calidad</button><button><span>◉</span>Lotes</button><button><span>•••</span>Más</button></nav>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
